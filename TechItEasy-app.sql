@@ -7,8 +7,6 @@ CREATE DATABASE "TechItEasy"
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
 
-
-
 CREATE TABLE public."user" (
     id BIGSERIAL PRIMARY KEY,
     username VARCHAR(55) UNIQUE NOT NULL,
@@ -18,7 +16,6 @@ CREATE TABLE public."user" (
     salaryScale INTEGER,
     vacationDays INTEGER
 );
-
 
 CREATE TABLE public."product" (
     id BIGSERIAL PRIMARY KEY,
@@ -32,8 +29,6 @@ CREATE TABLE public."product" (
 );
 
 COMMENT ON COLUMN public.product.type IS 'e.g., Television, RemoteController';
-
-
 
 CREATE TABLE public."television" (
     id BIGSERIAL PRIMARY KEY,
@@ -49,22 +44,19 @@ CREATE TABLE public."television" (
     FOREIGN KEY (product_id) REFERENCES public.product(id)
 );
 
-
-
 CREATE TABLE public."RemoteController" (
     id BIGSERIAL PRIMARY KEY,
     product_id BIGSERIAL,
-	  smart BOOLEAN,
+    smart BOOLEAN,
     batteryType VARCHAR(55),
     FOREIGN KEY (product_id) REFERENCES public.product(id)
 );
-
 
 CREATE TABLE public."CIModule" (
     id BIGSERIAL PRIMARY KEY,
     product_id BIGSERIAL,
     provider VARCHAR(55),
-	  encoding VARCHAR(255),
+    encoding VARCHAR(255),
     FOREIGN KEY (product_id) REFERENCES public.product(id)
 );
 
@@ -73,9 +65,7 @@ CREATE TABLE public."WallBracket" (
     product_id BIGSERIAL,
     adjustable BOOLEAN,
     mountingMethod VARCHAR(55),
-	  height DOUBLE PRECISION,
+    height DOUBLE PRECISION,
     width DOUBLE PRECISION,
     FOREIGN KEY (product_id) REFERENCES public.product(id)
 );
-
-
